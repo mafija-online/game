@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online MAFIJA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Bebas+Neue&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #0b0b0b;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        nav {
+            background: #1a1a1a;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            border-bottom: 2px solid #e50914;
+        }
+
+            nav ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+                nav ul li {
+                    display: inline-block;
+                    margin: 0 15px;
+                }
+
+                    nav ul li a {
+                        color: #fff;
+                        text-decoration: none;
+                        font-weight: 600;
+                        font-size: 14px;
+                        text-transform: uppercase;
+                    }
+
+                        /* Istaknut taster za Pocetak */
+                        nav ul li a.home-btn {
+                            color: #e50914;
+                            border: 1px solid #e50914;
+                            padding: 5px 10px;
+                            border-radius: 3px;
+                            transition: 0.3s;
+                        }
+
+                            nav ul li a.home-btn:hover {
+                                background: #e50914;
+                                color: #fff;
+                            }
+
+                        nav ul li a:hover {
+                            color: #e50914;
+                        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(11,11,11,1)), url("https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=2070&auto=format&fit=crop");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-box h1 {
+            font-family: 'Special Elite', cursive;
+            font-size: 80px;
+            color: #fff;
+            margin: 0;
+            text-shadow: 4px 4px 0px #e50914;
+        }
+
+        .hero-box h2 {
+            font-family: 'Special Elite', cursive;
+            font-size: 40px;
+            color: #e50914;
+            margin-top: 10px;
+            letter-spacing: 5px;
+            border-right: 3px solid #fff;
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3s steps(20, end), blink .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
+        }
+
+        @keyframes blink {
+            from, to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: #fff
+            }
+        }
+
+        .section {
+            padding: 100px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h2.naslov {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 60px;
+            color: #e50914;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .grid-uloge {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .uloga-kartica {
+            background: #161616;
+            padding: 30px;
+            border: 1px solid #333;
+            transition: 0.4s;
+        }
+
+            .uloga-kartica:hover {
+                border-color: #e50914;
+                transform: scale(1.02);
+            }
+
+            .uloga-kartica h3 {
+                font-family: 'Bebas Neue', sans-serif;
+                font-size: 32px;
+                color: #e50914;
+                margin-top: 0;
+            }
+
+        .info-panel {
+            background: #1a1a1a;
+            padding: 40px;
+            border-radius: 4px;
+            border-left: 8px solid #e50914;
+        }
+
+        .clanovi {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .osumnjiceni {
+            text-align: center;
+        }
+
+            .osumnjiceni span {
+                color: #e50914;
+                text-transform: uppercase;
+                font-size: 13px;
+                letter-spacing: 1px;
+                font-weight: bold;
+            }
+
+            .osumnjiceni p {
+                font-family: 'Bebas Neue', sans-serif;
+                font-size: 38px;
+                margin: 5px 0;
+            }
+
+        .btn-join {
+            display: inline-block;
+            background: #e50914;
+            color: #fff;
+            padding: 18px 50px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: 30px;
+            border-radius: 2px;
+            box-shadow: 0 0 15px rgba(229, 9, 20, 0.6);
+            transition: 0.3s;
+        }
+
+            .btn-join:hover {
+                background: #ff0000;
+                box-shadow: 0 0 30px rgba(255, 0, 0, 0.9);
+                transform: scale(1.05);
+            }
+
+        footer {
+            background: #000;
+            padding: 50px;
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            .hero-box h1 {
+                font-size: 50px;
+            }
+
+            .hero-box h2 {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+<body id="top">
+
+    <nav>
+        <ul>
+            <li><a href="#top" class="home-btn">Početak</a></li>
+            <li><a href="#o-igri">O igri</a></li>
+            <li><a href="#uloge">Uloge</a></li>
+            <li><a href="#pravila">Pravila</a></li>
+            <li><a href="#ekipa">Developeri</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-box">
+            <h1>MAFIJA</h1>
+            <h2>ONLINE</h2>
+            <p style="font-size: 1.3em; margin: 25px 0;">Grad spava. Mafija se budi. Jesi li spreman?</p>
+            <a href="https://mafia-game.vercel.app" class="btn-join">Započni igru</a>
+        </div>
+    </section>
+
+    <section id="o-igri" class="section">
+        <h2 class="naslov">O PROJEKTU</h2>
+        <div style="text-align: center; font-size: 1.2em;">
+            <p>Dobrodošao u digitalni svet prevare. Mafija Online je projekat napravljen za sve ljubitelje poznate društvene igre mafija.</p>
+            <p>Sistem je jednostavan: dobiješ ulogu, sakriješ identitet i pokušaš da preživiš dok tvoja strana ne pobedi. Pazi kome veruješ.</p>
+        </div>
+    </section>
+
+    <section id="uloge" class="section" style="background: #111; max-width: 100%;">
+        <div style="max-width: 1100px; margin: 0 auto;">
+            <h2 class="naslov">DOSTUPNE ULOGE</h2>
+            <div class="grid-uloge">
+                <div class="uloga-kartica">
+                    <h3>Mafija 🕵️‍♂️</h3>
+                    <p>Dogovarate se noću koga ukloniti. Cilj je da vas ostane više nego građana.</p>
+                </div>
+                <div class="uloga-kartica">
+                    <h3>Građanin 🗣️</h3>
+                    <p>Nemaš moći, ali tvoj glas na glasanju je jedino oružje protiv mafije.</p>
+                </div>
+                <div class="uloga-kartica">
+                    <h3>Policajac 👮</h3>
+                    <p>Istražuješ ljude noću. Kad saznaš ko je mafija, moraš ubediti druge bez da se otkriješ.</p>
+                </div>
+                <div class="uloga-kartica">
+                    <h3>Doktor 🩺</h3>
+                    <p>Svake noći biraš jednog igrača kojeg štitiš. Možeš spasiti nekoga od sigurne smrti.</p>
+                </div>
+                <div class="uloga-kartica">
+                    <h3>Dama 💋</h3>
+                    <p>Tvoj izbor blokira akciju drugog igrača. Možeš biti heroj ili slučajno ometati svoje.</p>
+                </div>
+                <div class="uloga-kartica">
+                    <h3>Joker 🃏</h3>
+                    <p>Pobeđuješ samo ako te grad izglasa kao mafiju. Moraš da se ponašaš kao mafija!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pravila" class="section">
+        <h2 class="naslov">PRAVILA IGRE</h2>
+        <div class="info-panel">
+            <p><strong>Faza Dana:</strong> Vreme za diskusiju. Igrači iznose sumnje, brane se i na kraju glasaju za eliminaciju jednog igrača.</p>
+            <p><strong>Faza Noći:</strong> Svi zatvaraju oči. Mafija bira žrtvu, a policija, doktor i dama obavljaju svoje tajne zadatke.</p>
+            <hr style="border-color: #333; margin: 20px 0;">
+            <p style="text-align: center;">Igra se završava kada Mafija bude izbačena ili kada ih ostane dovoljno da preuzmu grad.</p>
+        </div>
+    </section>
+
+    <section id="ekipa" class="section" style="background: #080808; max-width: 100%;">
+        <h2 class="naslov">DEVELOPERI</h2>
+        <div class="clanovi">
+            <div class="osumnjiceni">
+                <span>Programer</span>
+                <p>Lazar Zečević</p>
+            </div>
+            <div class="osumnjiceni">
+                <span>WEB programer</span>
+                <p>Luka Žujović</p>
+            </div>
+            <div class="osumnjiceni">
+                <span>Dizajner</span>
+                <p>Nikola Knežević</p>
+            </div>
+            <div class="osumnjiceni">
+                <span>Drzštvene mreže</span>
+                <p>Miloš Đurić</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 MAFIJA ONLINE | STROGO POVERLJIVO</p>
+    </footer>
+
+</body>
+</html>
