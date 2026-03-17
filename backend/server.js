@@ -11,6 +11,7 @@ const io = new Server(httpServer, {
     origin: [
       'http://localhost:5173',
       'http://localhost:3000',
+      'https://game-zeta-flax-54.vercel.app',
       process.env.FRONTEND_URL,
     ].filter(Boolean),
     methods: ["GET", "POST"],
@@ -155,14 +156,12 @@ io.on('connection', (socket) => {
     const room = rooms.get(roomCode);
     if (!room) return;
     
-    // Ako je host, obavesti sve da se vrate na početni ekran
     if (socket.id === room.hostId) {
       room.handleHostLeaveLobby();
       rooms.delete(roomCode);
       return;
     }
     
-    // Ako nije host, samo ukloni igrača
     room.removePlayer(socket.id);
     socket.leave(roomCode);
     io.to(roomCode).emit('players-updated', { players: room.getPlayers() });
